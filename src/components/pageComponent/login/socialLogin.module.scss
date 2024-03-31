@@ -1,0 +1,33 @@
+.SocialLoginFrame {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-gray10, #e7effb);
+}
+.ContentFrame {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text {
+  color: var(--Linkbrary-gray100, #373740);
+
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.image {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  //align-items: center;
+  img {
+    width: 2.625rem;
+    height: 2.625rem;
+  }
+}

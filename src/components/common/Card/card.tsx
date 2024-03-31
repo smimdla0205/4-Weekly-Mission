@@ -1,8 +1,8 @@
 import style from "./card.module.scss";
-import starOn from "../../../public/images/star-on.svg";
-import starOff from "../../../public/images/star-off.svg";
-import MoreSee from "../../../public/images/threeMoreDots.svg";
-import logo from "../../../public/images/logo.svg";
+import starOn from "../../../../public/images/star-on.svg";
+import starOff from "../../../../public/images/star-off.svg";
+import MoreSee from "../../../../public/images/threeMoreDots.svg";
+import logo from "../../../../public/images/logo.svg";
 import {useState} from "react";
 import Image from "next/image";
 

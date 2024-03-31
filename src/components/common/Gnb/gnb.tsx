@@ -2,7 +2,7 @@ import React from "react";
 import style from "./gnb.module.scss";
 import logo from "../../assets/logo.svg";
 import profileImg from "../../assets/profileImg.svg";
-import ButtonCta from "../Cta/buttonCta";
+import ButtonCta from "../buttonCta/buttonCta";
 import Image from "next/image";
 interface Props {
   login: boolean;

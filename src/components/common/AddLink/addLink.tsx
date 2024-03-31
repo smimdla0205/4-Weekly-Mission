@@ -1,7 +1,6 @@
-import React from "react";
-import ButtonCta from "../Cta/buttonCta";
+import ButtonCta from "../buttonCta/buttonCta";
 import style from "./addLink.module.scss";
-import linkAdd from "../../../public/images/linkImg.svg";
+import linkAdd from "../../../../public/images/linkImg.svg";
 import Image from "next/image";
 
 function AddLink() {

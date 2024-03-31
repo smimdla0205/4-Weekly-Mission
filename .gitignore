@@ -33,7 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-### react ###
+# react
 .DS_*
 *.log
 logs
@@ -49,6 +49,5 @@ psd
 thumb
 sketch
 
-## part2팀 팀원 코드들 예시
-src/components/sample/
+# 그 외 파일들
 public/note/
