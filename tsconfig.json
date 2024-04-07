@@ -17,6 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/data/data-global.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/data/data-global.jsx", "src/data/data-login.jsx"],
   "exclude": ["node_modules"]
 }

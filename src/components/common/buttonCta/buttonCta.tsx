@@ -1,14 +1,23 @@
 import {ButtonHTMLAttributes, ReactNode} from "react";
 import style from "./buttonCta.module.scss";
 interface Props extends ButtonHTMLAttributes<HTMLInputElement> {
-  text: string;
+  children: ReactNode;
+  page?: string | undefined;
 }
 
-function ButtonCta({className = "", text, type}: Props) {
+function ButtonCta({className = "", children, type, page}: Props) {
   const classnames = `${style.cta} ${className}`;
+  let ButtonCtaText;
+  /*if ((page = "signIn")) {
+    ButtonCtaText = "로그인";
+  } else if ((page = "signOut")) {
+    ButtonCtaText = "회원가입";
+  } else {
+    ButtonCtaText = children;
+  }*/
   return (
     <button className={classnames} type={type}>
-      {text}
+      {children}
     </button>
   );
 }

@@ -1,3 +1,12 @@
+// 깊게 찾아보자
+
+.inputBox {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
 .inputFrame {
   display: flex;
   width: 100%;
@@ -30,6 +39,14 @@
     outline: none;
   }
 }
+.errorMessage {
+  color: var(--Linkbrary-red, #ff5b56);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .label {
   color: var(--black, #000);
   font-size: 14px;

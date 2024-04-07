@@ -1,17 +1,17 @@
-.loginBox {
+.loginContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.875rem;
-  // align-items: center;
-}
-.inputBox {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
   align-items: flex-start;
+  label {
+    margin-bottom: 0.75rem;
+  }
+  > div {
+    margin-bottom: 1.5rem;
+  }
+  .buttonCta {
+    margin-top: 0.375rem;
+  }
 }
 .buttonCta {
   width: 100%;

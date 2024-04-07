@@ -1,12 +1,12 @@
-import {LabelHTMLAttributes} from "react";
+import {LabelHTMLAttributes, ReactNode} from "react";
 import style from "./input.module.scss";
-interface labelProps extends LabelHTMLAttributes<HTMLInputElement> {
-  text: string;
+interface labelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  children: ReactNode;
 }
-function Label({htmlFor, text}: labelProps) {
+function Label({htmlFor, children}: labelProps) {
   return (
     <label htmlFor={htmlFor} className={style.label}>
-      {text}
+      {children}
     </label>
   );
 }

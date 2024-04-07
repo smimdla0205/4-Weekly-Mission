@@ -1,46 +1,39 @@
+import axios from "axios";
+
 const BASE_URL = "https://bootcamp-api.codeit.kr";
 
-export async function getUser() {
-  const response = await fetch(`${BASE_URL}/api/users`);
-  const body = await response.json();
-  return body;
-}
-export async function createLogin(data) {
-  const response = await fetch(`${BASE_URL}/api/sign-in`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  const body = await response.json();
-  return body;
+export async function postSignIn(body) {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/sign-in`, body);
+    const responseData = await response.data;
+
+    return responseData;
+  } catch (error) {
+    const errorData = error.response.data;
+    return errorData;
+  }
 }
 
-// formData 안됌..
-/*fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    email: "test@codeit.com",
-    password: "sprint101",
-  })
-})
+export async function postSignUp(body) {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/sign-up`, body);
+    const responseData = await response.data;
 
+    return responseData;
+  } catch (error) {
+    const errorData = error.response.data;
+    return errorData;
+  }
+}
 
-try {
-  const obj = {
-    email: "test@codeit.com",
-    password: "sprint101",
-  };
-  const response = await fetch(`${BASE_URL}/api/sign-in`, {
-    method: "POST",
-    body: obj,
-  });
-  const body = await response.json();
-  return body;
-} catch (error) {
-  console.error("Error:", error);
-}*/
+export async function postCheckEmail() {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/check-email`, body);
+    const responseData = await response.data;
+
+    return responseData;
+  } catch (error) {
+    const errorData = error.response.data;
+    return errorData;
+  }
+}

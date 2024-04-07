@@ -1,23 +1,37 @@
 import style from "./input.module.scss";
-import {IconPassword} from "../../../../public/images/icon/icon";
-import {InputHTMLAttributes, useState} from "react";
+import images from "@/src/utils/globalImage";
+import {InputHTMLAttributes, useEffect, useState} from "react";
+import {inputErrorMessage} from "../../../utils/errorMessage";
+import Image from "next/image";
+
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
   type: string;
-  icon?: boolean;
+  value: string;
+  error?: string;
 }
 
-function Input({type, icon, className = "", ...props}: Props) {
+function Input({name, type, value, error, className = "", ...props}: Props) {
   const [inputType, setInputType] = useState(type);
-
-  const passwordIconClick = () => {
+  const [errorMessage, setErrorMessage] = useState(error);
+  const passwordImg = type === "password" ? images.eyeOnGray : images.eyeOffGray;
+  const passwordImageClick = () => {
     setInputType((prevType) => (prevType === "password" ? "text" : "password"));
   };
 
+  const HandleBlurError = (e: React.FocusEvent<HTMLInputElement>) => {
+    const inputTarget = e.target;
+    setErrorMessage(inputErrorMessage(inputTarget));
+  };
   return (
-    <div className={style.inputFrame}>
-      <input className={style.input} type={inputType} {...props} />
-      {icon && <IconPassword type={inputType} onClick={passwordIconClick} />}
+    <div className={style.inputBox}>
+      <div className={style.inputFrame}>
+        <input name={name} type={inputType} className={style.input} onBlur={HandleBlurError} {...props} />
+        {type === "password" && <Image src={passwordImg} alt="password Show" onClick={passwordImageClick} priority />}
+      </div>
+      {errorMessage && <span className={style.errorMessage}>{errorMessage}</span>}
     </div>
   );
 }
+
 export default Input;

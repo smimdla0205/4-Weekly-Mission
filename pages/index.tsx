@@ -1,7 +1,5 @@
 import Head from "next/head";
-import LoginPage from "./Login";
-import Input from "@/src/components/common/input/input";
-import LoginBox from "@/src/components/pageComponent/login/loginBox";
+import SignIn from "./login/signIn";
 export default function Home() {
   return (
     <>
@@ -11,9 +9,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <LoginBox />
-      </main>
     </>
   );
 }

@@ -51,3 +51,11 @@ sketch
 
 # 그 외 파일들
 public/note/
+
+src/hooks/use-toggle-false.tsx
+src/components/common/buttonFolder
+src/components/common/addLink
+src/components/common/card
+src/components/common/gnb
+src/components/common/icon
+src/components/common/searchBar
