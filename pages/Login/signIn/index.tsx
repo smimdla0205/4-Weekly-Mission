@@ -1,8 +1,7 @@
 import style from "@/pages/login/login.module.scss";
-import LoginSocial from "@/src/components/pageComponent/login/loginSocial";
-import LoginContainer from "@/src/components/pageComponent/login/loginContainer";
+import SocialSign from "@/src/components/pageComponent/login/socialSign";
+import LoginForm from "@/src/components/pageComponent/login/loginForm";
 import LoginMenu from "@/src/components/pageComponent/login/loginMenu";
-
 function SignIn() {
   return (
     <div className={style.loginPage}>
@@ -11,10 +10,10 @@ function SignIn() {
           <LoginMenu signState={true} />
         </header>
         <main className={style.main}>
-          <LoginContainer signState={true} />
+          <LoginForm signState={true} />
         </main>
         <aside className={style.aside}>
-          <LoginSocial>소셜 로그인</LoginSocial>
+          <SocialSign>소셜 로그인</SocialSign>
         </aside>
       </section>
     </div>

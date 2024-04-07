@@ -24,3 +24,5 @@ const loginSlice = createSlice({
 
 export const {loginFailuresCount, loginSuccessReset} = loginSlice.actions;
 export default loginSlice.reducer;
+
+// 리덕스 적용하다가 type지정이 안돼서 리덕스 툴킷을 알게되고 또 공부... 시간도.. 하하하 (멘붕 2) 정상작동하지는 확인 안해봤어요..

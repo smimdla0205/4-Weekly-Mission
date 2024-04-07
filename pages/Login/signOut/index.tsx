@@ -1,6 +1,6 @@
 import style from "@/pages/login/login.module.scss";
-import LoginSocial from "../../../src/components/pageComponent/login/loginSocial";
-import LoginContainer from "../../../src/components/pageComponent/login/loginContainer";
+import SocialSign from "@/src/components/pageComponent/login/socialSign";
+import LoginForm from "@/src/components/pageComponent/login/loginForm";
 import LoginMenu from "@/src/components/pageComponent/login/loginMenu";
 
 function SignOut() {
@@ -11,10 +11,10 @@ function SignOut() {
           <LoginMenu signState={false} />
         </header>
         <main className={style.main}>
-          <LoginContainer signState={false} />
+          <LoginForm signState={false} />
         </main>
         <aside className={style.aside}>
-          <LoginSocial>소셜 로그인</LoginSocial>
+          <SocialSign>다른 방식으로 가입하기</SocialSign>
         </aside>
       </section>
     </div>

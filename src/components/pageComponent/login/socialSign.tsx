@@ -1,11 +1,11 @@
-import style from "./loginSocial.module.scss";
+import style from "./socialSign.module.scss";
 import images from "@/src/utils/globalImage";
 import Image from "next/image";
 import {ReactNode} from "react";
 interface Props {
   children: ReactNode;
 }
-function LoginSocial({children}: Props) {
+function SocialSign({children}: Props) {
   return (
     <div className={style.contentFrame}>
       <div className={style.text}>{children}</div>
@@ -16,4 +16,4 @@ function LoginSocial({children}: Props) {
     </div>
   );
 }
-export default LoginSocial;
+export default SocialSign;

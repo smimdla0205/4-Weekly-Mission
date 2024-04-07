@@ -12,7 +12,7 @@ interface ImageType {
   eyeOffGray: string;
   eyeOnBlack: string;
   eydOffBlack: string;
-  // [key: string]: string;
+  // [key: string]: string; 이렇게 설정하면 타입이 지정이 안되더라고요? 그래서 d.ts까지 갔던거인데 현 방법보다 효과적으로 관리하는법 뭐가 있을까요?
 }
 
 const images: ImageType = {

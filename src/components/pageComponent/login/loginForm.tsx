@@ -1,17 +1,14 @@
-import {ChangeEvent, FormEvent, useEffect, useRef, useState} from "react";
-
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import style from "./loginContainer.module.scss";
-import Input from "../../common/input/input";
-import Label from "../../common/input/label";
-
-import ButtonCta from "../../common/buttonCta/buttonCta";
-import {saveLoginInfo} from "../../../data/data-login";
-import {loginContainerErrorMessage} from "@/src/utils/errorMessage";
-
-import {useSelector, useDispatch} from "react-redux";
-import {loginFailuresCount, loginSuccessReset} from "@/src/redux/login/slice";
+import {useSelector} from "react-redux";
 import {RootState} from "@/src/redux/index";
+
+import style from "./LoginForm.module.scss";
+import Input from "@/src/components/common/input/input";
+import Label from "@/src/components/common/input/label";
+import ButtonCta from "@/src/components/common/buttonCta/buttonCta";
+import {saveLoginInfo} from "@/src/data/data-login";
+import {loginContainerErrorMessage} from "@/src/utils/errorMessage";
 
 interface values {
   email: string;
@@ -21,16 +18,16 @@ interface values {
 
 interface Props {
   signState: boolean;
+  // signState true면 signIn false면 signOut
 }
 
-function LoginContainer({signState}: Props) {
+function LoginForm({signState}: Props) {
   const initialValue = {
     email: "",
     password: "",
     confirmPassword: "",
-  };
+  }; // 인풋의 로그인값, 에러메세지의 초기값
   const router = useRouter();
-  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState<values>(initialValue);
   const [loginValues, setLoginValue] = useState<values>(initialValue);
   const loginFailNum = useSelector((state: RootState) => state.login.fail);
@@ -39,23 +36,21 @@ function LoginContainer({signState}: Props) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
     setLoginValue((prevLoginValues) => ({
-      ...prevLoginValues, // 이전 복사본을 불러온다
-      [name]: value, // 복사본을 수정한다
+      ...prevLoginValues,
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     const {email, password} = loginValues;
     const loginData = {email, password};
-    //const inputEmail= e.currentTarget.elements.namedItem("email")
+    const emailData = {email};
+    // 데이터 정제하는 값 이건 page에서 관리하는게 좋을까요? 아니면 saveLoginInfo 함수 내에서 처리하는게 좋을까요?
     e.preventDefault();
-
-    const isLoggedIn = await saveLoginInfo(loginData);
-    if (isLoggedIn) {
+    if (signState && (await saveLoginInfo(loginData))) {
       router.replace("/folder");
-      dispatch(loginSuccessReset());
-    } else {
-      dispatch(loginFailuresCount());
+    } else if (!signState) {
+      // 미완입니다...
     }
   };
 
@@ -63,7 +58,9 @@ function LoginContainer({signState}: Props) {
     if (loginFailNum > 0) {
       setLoginValue(initialValue);
       setErrorMessage(loginContainerErrorMessage(loginValues));
-    }
+    } // 미완입니다..
+    // 추가해야할것// loginFailNum signin페이지한테만 묶여있다.. 로그인 실패하고 회원가입 페이지로 들어갈수 있는데 그런상황때 오류가 발생할수도?
+    // 로그인후 다시 folder 페이지 이동됬으나 로그인 페이지로 들어올수도 있어서 그거 막는 useEffect 설정
   }, [loginFailNum]);
   return (
     <form method="post" className={style.loginContainer} onSubmit={handleSubmit}>
@@ -75,6 +72,7 @@ function LoginContainer({signState}: Props) {
         value={loginValues.email}
         placeholder="아이디 입력"
         onChange={handleChange}
+        error={errorMessage.email}
       />
       <Label htmlFor="password">비밀번호</Label>
       <Input
@@ -84,6 +82,7 @@ function LoginContainer({signState}: Props) {
         value={loginValues.password}
         placeholder="비밀번호 입력"
         onChange={handleChange}
+        error={errorMessage.password}
       />
       {signState || (
         <>
@@ -95,6 +94,7 @@ function LoginContainer({signState}: Props) {
             value={loginValues.confirmPassword}
             placeholder="비밀번호 확인"
             onChange={handleChange}
+            error={errorMessage.confirmPassword}
           />
         </>
       )}
@@ -104,23 +104,4 @@ function LoginContainer({signState}: Props) {
     </form>
   );
 }
-export default LoginContainer;
-
-/*
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-  setEmail(e.target.value);
-};
-
-const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-  setPassword(e.target.value);
-};
-
-
-{
-  "email": “test@codeit.com",
-  "password": "sprint101"
-}
-
-*/
+export default LoginForm;

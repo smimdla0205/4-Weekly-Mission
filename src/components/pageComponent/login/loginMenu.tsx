@@ -1,8 +1,8 @@
-import routes from "@/src/utils/globalRoutes";
 import style from "./loginMenu.module.scss";
-import Image from "next/image";
+import routes from "@/src/utils/globalRoutes";
 import images from "@/src/utils/globalImage";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   signState: boolean;
